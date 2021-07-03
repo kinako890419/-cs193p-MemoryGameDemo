@@ -1,4 +1,4 @@
-# -cs193p-MemoryGameDemo
+# cs193p-MemoryGameDemo
 cs193p course memory game
 
 課程連結：https://youtube.com/playlist?list=PLpGHT1n4-mAtTj9oywMWoBx0dCGd51_yG
