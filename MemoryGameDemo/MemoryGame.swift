@@ -12,36 +12,36 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
     private(set) var cards: Array<Card>
     // setting it is private, but reading it is not
     
-    private var indexOfTheOneAndTheOnlyFaceUpCard: Int!{
+    private var indexOfTheOneAndTheOnlyFaceUpCard: Int?{
         get{
             //var faceUpCardIndices = [Int]() //= Array<Int>[]
             cards.indices.filter {cards[$0].isFaceUp}.only
             
-            /**for index in cards.indices{
+            /*for index in cards.indices{
                 if cards[index].isFaceUp{
                     faceUpCardIndices.append(index)
                 }
-            }**/
+            }*/
             
             /**if faceUpCardIndices.count == 1{
                 return faceUpCardIndices.first // faceUpCardIndices[0]
             }
             else{
                 return nil
-            }**/
+            }*/
         }
         set{
             for index in cards.indices{ // index的複數
                 
                 cards[index].isFaceUp = index == newValue
-                /**if index == newValue{
+                /*if index == newValue{
                     cards[index].isFaceUp = true
 
                 }
                 else{
                     cards[index].isFaceUp = false
 
-                }**/
+                }*/
             }
         }
     }

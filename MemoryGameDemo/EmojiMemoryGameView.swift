@@ -12,7 +12,7 @@ struct EmojiMemoryGameView: View {// constraints and gains : constraints
                 // var is not allowed to build in view builders
                     card in
                     CardView(card: card).onTapGesture{
-                        withAnimation(.linear(duration: 1)){
+                        withAnimation(.easeInOut(duration: 1)){
                             // flip card animation
                             //self.
                             viewModel.choose(card: card)
@@ -38,7 +38,7 @@ struct EmojiMemoryGameView: View {// constraints and gains : constraints
 //presents single card
 struct CardView: View{
     
-    var card: MemoryGame<String>.Card
+    let card: MemoryGame<String>.Card
     var body: some View {
         
         GeometryReader{
@@ -68,25 +68,27 @@ struct CardView: View{
                     if card.isConsumingBonusTime{
                         // count down pie
                         //Circle().padding(5).opacity(0.4)
-                        Pie(startAngle: Angle.degrees(0-90), endAngle: Angle.degrees(-animatedBonusRemaining*360-90),clockWise: true)
+                        Pie(startAngle: Angle.degrees(-90), endAngle: Angle.degrees(-animatedBonusRemaining*360-90))//,clockWise: true)
                             .onAppear{
                                 self.startBonusTimeAnimation()
                             }
                     }
                     else{
-                        Pie(startAngle: Angle.degrees(0-90), endAngle: Angle.degrees(-card.bonusRemaining*360-90),clockWise: true)
+                        Pie(startAngle: Angle.degrees(-90),
+                            endAngle: Angle.degrees(-card.bonusRemaining*360-90))//,clockWise: true)
                     }
                 }.padding(5).opacity(0.4).transition(.scale)
                 // emoji
                 Text(card.content).font(Font.system(size: fontSize(for: size)))
                 //.font(Font.largeTitle
                 // rotation effect: 360 degrees rotation
-                    .rotationEffect(Angle.degrees(card.isMatched ? 180:0))
+                    .rotationEffect(Angle.degrees(card.isMatched ? 360:0))
                     .animation(card.isMatched ? Animation.linear(duration: 0.8).repeatForever(autoreverses: false): .default)
             }
             .cardify(isFaceUp: card.isFaceUp)
             //.modifier(Cardify(isFaceUp: card.isFaceUp))
-            .transition(AnyTransition.scale) // card disappear animation
+            .transition(.scale) // card disappear animation
+            //.transition(AnyTransition.scale)
         }
         
         

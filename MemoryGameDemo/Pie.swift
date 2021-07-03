@@ -10,7 +10,7 @@ struct Pie: Shape{// All shapes are assumed doing animation
     // 倒數圓角
     var startAngle: Angle
     var endAngle: Angle
-    var clockWise: Bool = false
+    var clockWise: Bool = true
     var animatableData: AnimatablePair<Double,Double>{// Double: Two angles
         get{
             AnimatablePair(startAngle.radians,endAngle.radians)

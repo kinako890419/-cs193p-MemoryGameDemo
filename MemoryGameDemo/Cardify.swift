@@ -12,10 +12,6 @@ struct Cardify: AnimatableModifier {// ViewModifier, Animatable
     var isFaceUp: Bool{
         rotation < 90
     }
-    init(isFaceUp: Bool){
-        // is faced up -> 0, otherwise 180
-        rotation = isFaceUp ? 0:180
-    }
     var animatableData: Double{
         get{
             return rotation
@@ -24,6 +20,11 @@ struct Cardify: AnimatableModifier {// ViewModifier, Animatable
             rotation = newValue
         }
     }
+    init(isFaceUp: Bool){
+        // is faced up -> 0, otherwise 180
+        rotation = isFaceUp ? 0:180
+    }
+    
     // MARK: - Drawing Constraints
     // clean up codes
     private let cornerRadius: CGFloat = 10.0
